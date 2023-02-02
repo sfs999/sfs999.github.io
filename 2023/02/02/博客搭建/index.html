@@ -24,7 +24,7 @@
 <meta property="og:description" content="依托于github完成个人博客的搭建过程，但目前只完成了基础部分 Todo:              评论功能                         版权信息                         页面个性化                         云服务器部署             阿里云学生免费领取6个月              公网IP访问">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-02T10:46:30.918Z">
-<meta property="article:modified_time" content="2023-02-02T16:16:28.839Z">
+<meta property="article:modified_time" content="2023-02-02T16:22:14.630Z">
 <meta property="article:author" content="sfs999">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary_large_image">
@@ -301,8 +301,8 @@ target="_blank" rel="noopener" href="https://nodejs.org/en/download/">官网</a>
 target="_blank" rel="noopener" href="https://git-scm.com/download/win">官网</a></h2>
 <p>检验Git是否安装成功 <figure><div class="code-wrapper"><pre class="line-numbers language-text" data-language="text"><code class="language-text">$ git --version  
 $ node -v  
-$ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure> ## Hexo
-  选择一个磁盘，新建一个文件夹，自己重命名文件夹（如：我的文件夹为：Ｅ_Blog），博客相关文件将储存在此文件夹下，在该文件夹下右键鼠标，点击
+$ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure> ## Hexo</p>
+<p>  选择一个磁盘，新建一个文件夹，自己重命名文件夹（如：我的文件夹为：Ｅ_Blog），博客相关文件将储存在此文件夹下，在该文件夹下右键鼠标，点击
 Git Bash Here，输入以下 npm 命令即可安装，第一个命令表示安装
 hexo，第二个命令表示安装 hexo 部署到 git page 的
 deployer，如图所示即为安装成功</p>
@@ -337,16 +337,16 @@ The key fingerprint is:
 The key&#39;s randomart image is:  
 这里也是各种字母数字符号组成的字符串  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 运行以下命令，将公钥的内容复制到系统粘贴板上： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> ## 在
-GitHub 账户中添加你的公钥 ① 登陆 GitHub，进入 Settings：</p>
+GitHub 账户中添加你的公钥</p>
+<p>① 登陆 GitHub，进入 Settings：</p>
 <p><img
 src="https://img-blog.csdnimg.cn/5cf6291e4c0e4f8f94b8f5ba188fe224.png#pic_center" srcset="/img/loading.gif" lazyload />
 ② 点击 SSH and GPG Keys：</p>
 <p><img
-src="https://img-blog.csdnimg.cn/f6d7700ec9e74760af3d0142049100c6.png#pic_center" srcset="/img/loading.gif" lazyload />)
+src="https://img-blog.csdnimg.cn/f6d7700ec9e74760af3d0142049100c6.png#pic_center" srcset="/img/loading.gif" lazyload />
 ③ 选择 New SSH key：</p>
 <p><img
-src="https://img-blog.csdnimg.cn/8fc1ce14f90f4415b25aba6285a7f08d.png#pic_center" srcset="/img/loading.gif" lazyload />
-④ 粘贴密钥：</p>
+src="https://img-blog.csdnimg.cn/8fc1ce14f90f4415b25aba6285a7f08d.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p><img
 src="https://img-blog.csdnimg.cn/14aacf2531b34204867354c31810336b.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="测试">测试</h2>
@@ -355,8 +355,8 @@ src="https://img-blog.csdnimg.cn/14aacf2531b34204867354c31810336b.png#pic_center
 <p>之后会显示： <img
 src="https://img-blog.csdnimg.cn/94852a07bd4b4a6fbceb27e7e80b5eab.png#pic_center" srcset="/img/loading.gif" lazyload />
 输入 yes 后会显示： <img
-src="https://img-blog.csdnimg.cn/f2b0e8cf43224faeb87f911e8288d53a.png#pic_center" srcset="/img/loading.gif" lazyload />
-此时表示设置正确 ## 配置 Git 个人信息  Git
+src="https://img-blog.csdnimg.cn/f2b0e8cf43224faeb87f911e8288d53a.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p>此时表示设置正确 ## 配置 Git 个人信息  Git
 会根据用户的名字和邮箱来记录提交，GitHub
 也是用这些信息来做权限的处理，输入以下命令进行个人信息的设置，把名称和邮箱替换成你自己的，名字可以不是
 GitHub 的昵称，但为了方便记忆，建议与 GitHub 一致 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ git config --global user.name &quot;此处填你的用户名&quot;  
@@ -394,9 +394,11 @@ src="https://img-blog.csdnimg.cn/21e1fe012c754005a4621261c8dd2854.png#pic_center
 <p>你的博客地址：https://你的用户名.github.io
 ,现在每个人都可以通过此链接访问你的博客了</p>
 <h2 id="个性化fluid">个性化Fluid</h2>
-<p>在_config.fluid.yml文件中查找对应位置进行修改 修改主界面标语
- 查找关键词：Slogan 修改主页名称
- 查找关键词：blog_title依托于github完成个人博客的搭建过程，但目前只完成了基础部分</p>
+<p>在_config.fluid.yml文件中查找对应位置进行修改</p>
+<p>修改主界面标语</p>
+<p> 查找关键词：Slogan</p>
+<p>修改主页名称</p>
+<p> 查找关键词：blog_title依托于github完成个人博客的搭建过程，但目前只完成了基础部分</p>
 
                 
               </div>
