@@ -23,14 +23,11 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="依托于github完成个人博客的搭建过程，但目前只完成了基础部分 Todo:              评论功能                         版权信息                         页面个性化                         云服务器部署             阿里云学生免费领取6个月              公网IP访问">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/images/20190816220246218_1.png">
-<meta property="og:image" content="http://example.com/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/images/Snipaste_2023-02-02_20-10-56.png">
 <meta property="article:published_time" content="2023-02-02T10:46:30.918Z">
-<meta property="article:modified_time" content="2023-02-02T12:39:24.644Z">
+<meta property="article:modified_time" content="2023-02-02T13:06:39.479Z">
 <meta property="article:author" content="sfs999">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/images/20190816220246218_1.png">
   
   
   
@@ -316,14 +313,14 @@ Bash Here，输入以下命令，如图所示则安装成功 <figure><div class=
 <p>Hexo 安装完成后，将会在指定文件夹中新建所需要的文件，Hexo
 文件夹下的目录如下：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1OGQyZWVlNS5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969037.png" srcset="/img/loading.gif" lazyload />
 ### 本地查看效果 执行以下命令，执行完即可登录 http://localhost:4000/
 查看效果 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo generate  
 $ hexo server <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></p>
 <p>显示以下信息说明操作成功： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">INFO Hexo is running at http:&#x2F;&#x2F;0.0.0.0:4000&#x2F;. Press Ctrl+C to stop.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> # 将博客部署到 Github Pages
 上 ## 创建项目代码库</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY1ZTA5MzBjMi5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969038.png" srcset="/img/loading.gif" lazyload />
 ## 配置 SSH 密钥  只有配置好 SSH 密钥后，我们才可以通过 git
 操作实现本地代码库与 Github
 代码库同步，在你第一次新建的文件夹里面（如：我的文件夹为：Ｅ_Blog） Git
@@ -342,24 +339,24 @@ The key&#39;s randomart image is:
 运行以下命令，将公钥的内容复制到系统粘贴板上： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> ## 在
 GitHub 账户中添加你的公钥 ① 登陆 GitHub，进入 Settings：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2MDZlNzU1OC5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969039.png" srcset="/img/loading.gif" lazyload />
 ② 点击 SSH and GPG Keys：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2MjJiNDU4OC5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969040.png" srcset="/img/loading.gif" lazyload />
 ③ 选择 New SSH key：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2M2ViMWFiMi5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969041.png" srcset="/img/loading.gif" lazyload />
 ④ 粘贴密钥：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2YmMxZmM4Ny5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969042.png" srcset="/img/loading.gif" lazyload />
 ## 测试 输入以下命令：注意：==git@github.com不要做任何更改！ #F44336==
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
 <p>之后会显示：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY2ZTNiNDgwMy5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969043.png" srcset="/img/loading.gif" lazyload />
 输入 yes 后会显示：</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3MDJjNDZkNi5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969044.png" srcset="/img/loading.gif" lazyload />
 此时表示设置正确 ## 配置 Git 个人信息  Git
 会根据用户的名字和邮箱来记录提交，GitHub
 也是用这些信息来做权限的处理，输入以下命令进行个人信息的设置，把名称和邮箱替换成你自己的，名字可以不是
@@ -369,25 +366,27 @@ $ git config --global user.email  &quot;此处填你的邮箱&quot;<span aria-hi
 文件更新到 Github 的库中 ① 登录 Github 打开自己的项目 your
 name.github.io</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3MjBjY2FlMC5wbmc.png" srcset="/img/loading.gif" lazyload
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969045.png" srcset="/img/loading.gif" lazyload
 alt="enter description here" /> ② 鼠标移到 Clone or download 按钮，选择
 Use SSH</p>
-<p><img src="./images/20190816220246218_1.png" srcset="/img/loading.gif" lazyload
+<p><img
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969046.png" srcset="/img/loading.gif" lazyload
 alt="enter description here" /> ③ 一键复制地址</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3NmNiM2RhNC5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969047.png" srcset="/img/loading.gif" lazyload />
 ④ 打开你创建的 Hexo 文件夹（如：E:_Blog），右键用记事本（Notepad++或者VS
 code等都可以）打开该文件夹下的 _config.yml 文件</p>
 <p><img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3OGI4YmEzZS5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969048.png" srcset="/img/loading.gif" lazyload />
 ⑤ 按下图修改 _config.yml 文件并保存 <img
-src="./images/aHR0cHM6Ly9pLmxvbGkubmV0LzIwMTkvMDMvMjUvNWM5OGY3ZTExZWVkNy5wbmc.png" srcset="/img/loading.gif" lazyload />
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969049.png" srcset="/img/loading.gif" lazyload />
 ⑥ 在 Hexo 文件夹下分别执行以下命令 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 执行完之后会让你输入你的 Github
 的账号和密码，如果此时报以下错误，说明你的 deployer 没有安装成功
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ERROR Deployer not found: git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> 需要执行以下命令再安装一次： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> 再执行 hexo g
 -d，你的博客就会部署到 Github 上了 ⑦ 访问博客 等待博客构建完毕</p>
-<p><img src="./images/Snipaste_2023-02-02_20-10-56.png" srcset="/img/loading.gif" lazyload
+<p><img
+src="https://raw.githubusercontent.com/sfs999/xiaoshujiang/tuchaung/小书匠/1675342969051.png" srcset="/img/loading.gif" lazyload
 alt="enter description here" />
 你的博客地址：https://你的用户名.github.io
 ,现在每个人都可以通过此链接访问你的博客了 # 安装Hexo Fluid <a
