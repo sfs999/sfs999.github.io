@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Mr.Long's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
+
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
+
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
+
+
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.2"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/cat.png"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">longlongyu</div><div class="profile-signature">for me</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Long's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title"></h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2023-02-02</span></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><hr>
+<p>title: GEE环境的搭建</p>
+<h1 id="首先感谢各位大佬的经验"><a href="#首先感谢各位大佬的经验" class="headerlink" title="首先感谢各位大佬的经验~"></a>首先感谢各位大佬的经验~</h1><h2 id="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"><a href="#最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法" class="headerlink" title="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"></a>最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</h2><p>本文写于2022年12月12日，该方法实测有效</p>
+<h3 id="首先需要科学上网！！！"><a href="#首先需要科学上网！！！" class="headerlink" title="首先需要科学上网！！！"></a>首先需要科学上网！！！</h3><h3 id="注册谷歌账号并申请GEE使用"><a href="#注册谷歌账号并申请GEE使用" class="headerlink" title="注册谷歌账号并申请GEE使用"></a>注册谷歌账号并申请GEE使用</h3><p>关于注册谷歌账号的方法已经有很多了，这里给一个指路<br>本文参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43536034/article/details/125326723?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167083736816782390539750%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167083736816782390539750&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125326723-null-null.142%5Ev68%5Econtrol,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=GEE%E8%B4%A6%E5%8F%B7&spm=1018.2226.3001.4187">GEE学习系列——GEE账号注册</a></p>
+<h3 id="之后需要本地环境安装earthengine-api"><a href="#之后需要本地环境安装earthengine-api" class="headerlink" title="之后需要本地环境安装earthengine-api"></a>之后需要本地环境安装earthengine-api</h3><p>此处需要安装好python pip jupter，由于都是通用工具，所以本文不再介绍</p>
+<p>在终端中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install earthengine-api;</span><br></pre></td></tr></table></figure>
+
+<p>注意，pip安装包时要关闭代理</p>
+<h3 id="jupter在线编程的实现"><a href="#jupter在线编程的实现" class="headerlink" title="jupter在线编程的实现"></a>jupter在线编程的实现</h3><p>这里参考这篇文章：<br>谷歌网盘参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43360896/article/details/108174759?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167030206516800182159539%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167030206516800182159539&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-108174759-null-null.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=gee%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83&spm=1018.2226.3001.4187">GEE入门【1】| Python环境配置</a></p>
+<p>根据文章中的内容注册好谷歌网盘后再根据<br><img src="https://img-blog.csdnimg.cn/fc3fdeabd0fd4805bf8c3ba78e1d84e7.png#pic_center" alt="在这里插入图片描述"><br>中的本地jupter连接方法<br>首先在终端中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
+
+<p>安装网页扩展包并确认jupter版本符合</p>
+<p>之后在本地终端执行jupter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --NotebookApp.allow_origin=&#x27;https://colab.research.google.com&#x27; --port=8888 --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+
+<p>在在线环境中连接本地环境<br><img src="https://img-blog.csdnimg.cn/f27f460d0eb244af8e67b9cb83643944.png#pic_center" alt="在这里插入图片描述"><br>将jupter网址填入</p>
+<p><img src="https://img-blog.csdnimg.cn/704053a29b58477894b3f89fa47c7761.png#pic_center" alt="在这里插入图片描述"><br>之后执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ee</span><br><span class="line">ee.Authenticate()</span><br></pre></td></tr></table></figure>
+
+<p>如果出现这样则点击连接进行授权，可以避免谷歌客户端包等下载<br><img src="https://img-blog.csdnimg.cn/0cbd2a5b81d14566bb9a3801381d6215.png#pic_center" alt="在这里插入图片描述"><br>将授权码填入后回车，此时该设备已经授权完成。</p>
+<h3 id="关于本地接口的设置"><a href="#关于本地接口的设置" class="headerlink" title="关于本地接口的设置"></a>关于本地接口的设置</h3><p>接口的设置参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/awdwd233333/article/details/123394694?ops_request_misc=&request_id=&biz_id=102&utm_term=gee%20python&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-123394694.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&spm=1018.2226.3001.4187">【笔记】GEE之python学习</a></p>
+<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#初始化本地GEE服务</span><br><span class="line">import ee</span><br><span class="line">import os</span><br><span class="line">os.environ[&#x27;HTTP_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">os.environ[&#x27;HTTPS_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">ee.Initialize()</span><br><span class="line">#print(ee.Image(&#x27;USGS/SRTMGL1_003&#x27;).getInfo())</span><br></pre></td></tr></table></figure>
+
+<p>这里’<a href="http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度">http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度</a></p>
+<p>之后就可以完全本地连接GEE进行编程了</p>
+<!-- more --
+
+# 首先感谢各位大佬的经验~
+
+## 最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法
+
+本文写于2022年12月12日，该方法实测有效
+
+### 首先需要科学上网！！！
+
+### 注册谷歌账号并申请GEE使用
+
+关于注册谷歌账号的方法已经有很多了，这里给一个指路
+本文参考: [GEE学习系列——GEE账号注册](https://blog.csdn.net/weixin_43536034/article/details/125326723?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167083736816782390539750%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167083736816782390539750&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125326723-null-null.142^v68^control,201^v4^add_ask,213^v2^t3_control1&utm_term=GEE%E8%B4%A6%E5%8F%B7&spm=1018.2226.3001.4187)
+
+### 之后需要本地环境安装earthengine-api
+
+此处需要安装好python pip jupter，由于都是通用工具，所以本文不再介绍
+
+在终端中输入：
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install earthengine-api;</span><br></pre></td></tr></table></figure>
+
+<p>注意，pip安装包时要关闭代理</p>
+<h3 id="jupter在线编程的实现-1"><a href="#jupter在线编程的实现-1" class="headerlink" title="jupter在线编程的实现"></a>jupter在线编程的实现</h3><p>这里参考这篇文章：<br>谷歌网盘参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43360896/article/details/108174759?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167030206516800182159539%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167030206516800182159539&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-108174759-null-null.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=gee%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83&spm=1018.2226.3001.4187">GEE入门【1】| Python环境配置</a></p>
+<p>根据文章中的内容注册好谷歌网盘后再根据<br><img src="https://img-blog.csdnimg.cn/fc3fdeabd0fd4805bf8c3ba78e1d84e7.png#pic_center" alt="在这里插入图片描述"><br>中的本地jupter连接方法<br>首先在终端中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
+
+<p>安装网页扩展包并确认jupter版本符合</p>
+<p>之后在本地终端执行jupter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --NotebookApp.allow_origin=&#x27;https://colab.research.google.com&#x27; --port=8888 --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+
+<p>在在线环境中连接本地环境<br><img src="https://img-blog.csdnimg.cn/f27f460d0eb244af8e67b9cb83643944.png#pic_center" alt="在这里插入图片描述"><br>将jupter网址填入</p>
+<p><img src="https://img-blog.csdnimg.cn/704053a29b58477894b3f89fa47c7761.png#pic_center" alt="在这里插入图片描述"><br>之后执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ee</span><br><span class="line">ee.Authenticate()</span><br></pre></td></tr></table></figure>
+
+<p>如果出现这样则点击连接进行授权，可以避免谷歌客户端包等下载<br><img src="https://img-blog.csdnimg.cn/0cbd2a5b81d14566bb9a3801381d6215.png#pic_center" alt="在这里插入图片描述"><br>将授权码填入后回车，此时该设备已经授权完成。</p>
+<h3 id="关于本地接口的设置-1"><a href="#关于本地接口的设置-1" class="headerlink" title="关于本地接口的设置"></a>关于本地接口的设置</h3><p>接口的设置参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/awdwd233333/article/details/123394694?ops_request_misc=&request_id=&biz_id=102&utm_term=gee%20python&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-123394694.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&spm=1018.2226.3001.4187">【笔记】GEE之python学习</a></p>
+<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#初始化本地GEE服务</span><br><span class="line">import ee</span><br><span class="line">import os</span><br><span class="line">os.environ[&#x27;HTTP_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">os.environ[&#x27;HTTPS_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">ee.Initialize()</span><br><span class="line">#print(ee.Image(&#x27;USGS/SRTMGL1_003&#x27;).getInfo())</span><br></pre></td></tr></table></figure>
+
+<p>这里’<a href="http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度">http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度</a></p>
+<p>之后就可以完全本地连接GEE进行编程了</p>
+<h1 id="首先感谢各位大佬的经验-1"><a href="#首先感谢各位大佬的经验-1" class="headerlink" title="首先感谢各位大佬的经验~"></a>首先感谢各位大佬的经验~</h1><h2 id="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法-1"><a href="#最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法-1" class="headerlink" title="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"></a>最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</h2><p>本文写于2022年12月12日，该方法实测有效</p>
+<h3 id="首先需要科学上网！！！-1"><a href="#首先需要科学上网！！！-1" class="headerlink" title="首先需要科学上网！！！"></a>首先需要科学上网！！！</h3><h3 id="注册谷歌账号并申请GEE使用-1"><a href="#注册谷歌账号并申请GEE使用-1" class="headerlink" title="注册谷歌账号并申请GEE使用"></a>注册谷歌账号并申请GEE使用</h3><p>关于注册谷歌账号的方法已经有很多了，这里给一个指路<br>本文参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43536034/article/details/125326723?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167083736816782390539750%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167083736816782390539750&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125326723-null-null.142%5Ev68%5Econtrol,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=GEE%E8%B4%A6%E5%8F%B7&spm=1018.2226.3001.4187">GEE学习系列——GEE账号注册</a></p>
+<h3 id="之后需要本地环境安装earthengine-api-1"><a href="#之后需要本地环境安装earthengine-api-1" class="headerlink" title="之后需要本地环境安装earthengine-api"></a>之后需要本地环境安装earthengine-api</h3><p>此处需要安装好python pip jupter，由于都是通用工具，所以本文不再介绍</p>
+<p>在终端中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install earthengine-api;</span><br></pre></td></tr></table></figure>
+
+<p>注意，pip安装包时要关闭代理</p>
+<h3 id="jupter在线编程的实现-2"><a href="#jupter在线编程的实现-2" class="headerlink" title="jupter在线编程的实现"></a>jupter在线编程的实现</h3><p>这里参考这篇文章：<br>谷歌网盘参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43360896/article/details/108174759?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167030206516800182159539%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167030206516800182159539&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-108174759-null-null.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=gee%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83&spm=1018.2226.3001.4187">GEE入门【1】| Python环境配置</a></p>
+<p>根据文章中的内容注册好谷歌网盘后再根据<br><img src="https://img-blog.csdnimg.cn/fc3fdeabd0fd4805bf8c3ba78e1d84e7.png#pic_center" alt="在这里插入图片描述"><br>中的本地jupter连接方法<br>首先在终端中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
+
+<p>安装网页扩展包并确认jupter版本符合</p>
+<p>之后在本地终端执行jupter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --NotebookApp.allow_origin=&#x27;https://colab.research.google.com&#x27; --port=8888 --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+
+<p>在在线环境中连接本地环境<br><img src="https://img-blog.csdnimg.cn/f27f460d0eb244af8e67b9cb83643944.png#pic_center" alt="在这里插入图片描述"><br>将jupter网址填入</p>
+<p><img src="https://img-blog.csdnimg.cn/704053a29b58477894b3f89fa47c7761.png#pic_center" alt="在这里插入图片描述"><br>之后执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ee</span><br><span class="line">ee.Authenticate()</span><br></pre></td></tr></table></figure>
+
+<p>如果出现这样则点击连接进行授权，可以避免谷歌客户端包等下载<br><img src="https://img-blog.csdnimg.cn/0cbd2a5b81d14566bb9a3801381d6215.png#pic_center" alt="在这里插入图片描述"><br>将授权码填入后回车，此时该设备已经授权完成。</p>
+<h3 id="关于本地接口的设置-2"><a href="#关于本地接口的设置-2" class="headerlink" title="关于本地接口的设置"></a>关于本地接口的设置</h3><p>接口的设置参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/awdwd233333/article/details/123394694?ops_request_misc=&request_id=&biz_id=102&utm_term=gee%20python&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-123394694.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&spm=1018.2226.3001.4187">【笔记】GEE之python学习</a></p>
+<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#初始化本地GEE服务</span><br><span class="line">import ee</span><br><span class="line">import os</span><br><span class="line">os.environ[&#x27;HTTP_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">os.environ[&#x27;HTTPS_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">ee.Initialize()</span><br><span class="line">#print(ee.Image(&#x27;USGS/SRTMGL1_003&#x27;).getInfo())</span><br></pre></td></tr></table></figure>
+
+<p>这里’<a href="http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度">http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度</a></p>
+<p>之后就可以完全本地连接GEE进行编程了</p>
+<h1 id="首先感谢各位大佬的经验-2"><a href="#首先感谢各位大佬的经验-2" class="headerlink" title="首先感谢各位大佬的经验~"></a>首先感谢各位大佬的经验~</h1><h2 id="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法-2"><a href="#最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法-2" class="headerlink" title="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"></a>最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</h2><p>本文写于2022年12月12日，该方法实测有效</p>
+<h3 id="首先需要科学上网！！！-2"><a href="#首先需要科学上网！！！-2" class="headerlink" title="首先需要科学上网！！！"></a>首先需要科学上网！！！</h3><h3 id="注册谷歌账号并申请GEE使用-2"><a href="#注册谷歌账号并申请GEE使用-2" class="headerlink" title="注册谷歌账号并申请GEE使用"></a>注册谷歌账号并申请GEE使用</h3><p>关于注册谷歌账号的方法已经有很多了，这里给一个指路<br>本文参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43536034/article/details/125326723?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167083736816782390539750%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167083736816782390539750&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125326723-null-null.142%5Ev68%5Econtrol,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=GEE%E8%B4%A6%E5%8F%B7&spm=1018.2226.3001.4187">GEE学习系列——GEE账号注册</a></p>
+<h3 id="之后需要本地环境安装earthengine-api-2"><a href="#之后需要本地环境安装earthengine-api-2" class="headerlink" title="之后需要本地环境安装earthengine-api"></a>之后需要本地环境安装earthengine-api</h3><p>此处需要安装好python pip jupter，由于都是通用工具，所以本文不再介绍</p>
+<p>在终端中输入：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install earthengine-api;</span><br></pre></td></tr></table></figure>
+
+<p>注意，pip安装包时要关闭代理</p>
+<h3 id="jupter在线编程的实现-3"><a href="#jupter在线编程的实现-3" class="headerlink" title="jupter在线编程的实现"></a>jupter在线编程的实现</h3><p>这里参考这篇文章：<br>谷歌网盘参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43360896/article/details/108174759?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167030206516800182159539%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167030206516800182159539&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-108174759-null-null.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=gee%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83&spm=1018.2226.3001.4187">GEE入门【1】| Python环境配置</a></p>
+<p>根据文章中的内容注册好谷歌网盘后再根据<br><img src="https://img-blog.csdnimg.cn/fc3fdeabd0fd4805bf8c3ba78e1d84e7.png#pic_center" alt="在这里插入图片描述"><br>中的本地jupter连接方法<br>首先在终端中执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install jupyter_http_over_ws</span><br><span class="line">jupyter serverextension enable --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
+
+<p>安装网页扩展包并确认jupter版本符合</p>
+<p>之后在本地终端执行jupter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jupyter notebook --NotebookApp.allow_origin=&#x27;https://colab.research.google.com&#x27; --port=8888 --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+
+<p>在在线环境中连接本地环境<br><img src="https://img-blog.csdnimg.cn/f27f460d0eb244af8e67b9cb83643944.png#pic_center" alt="在这里插入图片描述"><br>将jupter网址填入</p>
+<p><img src="https://img-blog.csdnimg.cn/704053a29b58477894b3f89fa47c7761.png#pic_center" alt="在这里插入图片描述"><br>之后执行代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import ee</span><br><span class="line">ee.Authenticate()</span><br></pre></td></tr></table></figure>
+
+<p>如果出现这样则点击连接进行授权，可以避免谷歌客户端包等下载<br><img src="https://img-blog.csdnimg.cn/0cbd2a5b81d14566bb9a3801381d6215.png#pic_center" alt="在这里插入图片描述"><br>将授权码填入后回车，此时该设备已经授权完成。</p>
+<h3 id="关于本地接口的设置-3"><a href="#关于本地接口的设置-3" class="headerlink" title="关于本地接口的设置"></a>关于本地接口的设置</h3><p>接口的设置参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/awdwd233333/article/details/123394694?ops_request_misc=&request_id=&biz_id=102&utm_term=gee%20python&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-123394694.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&spm=1018.2226.3001.4187">【笔记】GEE之python学习</a></p>
+<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#初始化本地GEE服务</span><br><span class="line">import ee</span><br><span class="line">import os</span><br><span class="line">os.environ[&#x27;HTTP_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">os.environ[&#x27;HTTPS_PROXY&#x27;] = &#x27;http://127.0.0.1:1111&#x27;</span><br><span class="line">ee.Initialize()</span><br><span class="line">#print(ee.Image(&#x27;USGS/SRTMGL1_003&#x27;).getInfo())</span><br></pre></td></tr></table></figure>
+
+<p>这里’<a href="http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度">http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度</a></p>
+<p>之后就可以完全本地连接GEE进行编程了</p>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">John Doe</a></p><p> <span>Link:  </span><a href="http://example.com/2023/02/02/GEE%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/">http://example.com/2023/02/02/GEE%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2023/02/02/hello-world/" title="Hello World"><span>< PreviousPost</span><br><span class="prevTitle">Hello World</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%84%9F%E8%B0%A2%E5%90%84%E4%BD%8D%E5%A4%A7%E4%BD%AC%E7%9A%84%E7%BB%8F%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">首先感谢各位大佬的经验~</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E8%A6%81%E6%B1%82%E5%AD%A6%E4%B9%A0GEE%EF%BC%8C%E7%94%B1%E4%B8%8E%E6%83%B3%E8%A6%81%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E7%9A%84PY%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%9C%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E4%BA%86%E4%B8%80%E4%BA%9B%E5%9D%91%EF%BC%8C%E4%BD%86%E5%8F%82%E8%80%83%E5%A4%A7%E4%BD%AC%E7%9A%84%E6%96%87%E7%AB%A0%E6%9C%80%E7%BB%88%E6%88%90%E5%8A%9F%E9%83%A8%E7%BD%B2%E4%BA%86%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%EF%BC%8C%E4%BB%A5%E4%B8%8B%E4%B8%BA%E5%8F%AA%E9%9C%80%E5%AE%89%E8%A3%85earthengine-api%E7%9A%84%E9%83%A8%E7%BD%B2%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">首先需要科学上网！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%B0%B7%E6%AD%8C%E8%B4%A6%E5%8F%B7%E5%B9%B6%E7%94%B3%E8%AF%B7GEE%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">注册谷歌账号并申请GEE使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%8B%E5%90%8E%E9%9C%80%E8%A6%81%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85earthengine-api"><span class="toc-number">1.1.3.</span> <span class="toc-text">之后需要本地环境安装earthengine-api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupter%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text">jupter在线编程的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.5.</span> <span class="toc-text">关于本地接口的设置</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
