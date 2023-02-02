@@ -24,7 +24,7 @@
 <meta property="og:description" content="使用jupyter notebook搭建，避免安装客户端等操作 最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法 本文写于2022年12月12日，该方法实测有效">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-02T09:35:49.466Z">
-<meta property="article:modified_time" content="2023-02-02T09:49:55.057Z">
+<meta property="article:modified_time" content="2023-02-02T10:11:41.014Z">
 <meta property="article:author" content="sfs999">
 <meta property="article:tag" content="GEE">
 <meta property="article:tag" content="GEE_learn">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.1k 字
+          1.2k 字
         
       </span>
     
@@ -288,7 +288,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43536034/artic
 id="之后需要本地环境安装earthengine-api">之后需要本地环境安装earthengine-api</h3>
 <p>此处需要安装好python pip
 jupter，由于都是通用工具，所以本文不再介绍</p>
-<p>在终端中输入： <figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">pip install earthengine-api<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure> 注意，pip安装包时要关闭代理</p>
+<p>在终端中输入： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">pip install earthengine-api;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> 注意，pip安装包时要关闭代理</p>
 <h3 id="jupter在线编程的实现">jupter在线编程的实现</h3>
 <p>这里参考这篇文章： 谷歌网盘参考: <a
 target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43360896/article/details/108174759?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167030206516800182159539%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&amp;request_id=167030206516800182159539&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-4-108174759-null-null.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&amp;utm_term=gee%E9%85%8D%E7%BD%AEpython%E7%8E%AF%E5%A2%83&amp;spm=1018.2226.3001.4187">GEE入门【1】|
@@ -296,13 +296,24 @@ Python环境配置</a></p>
 <p>根据文章中的内容注册好谷歌网盘后再根据 <img
 src="https://img-blog.csdnimg.cn/fc3fdeabd0fd4805bf8c3ba78e1d84e7.png#pic_center" srcset="/img/loading.gif" lazyload
 alt="在这里插入图片描述" /> 中的本地jupter连接方法 首先在终端中执行
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">pip <span class="hljs-keyword">install </span><span class="hljs-keyword">jupyter_http_over_ws</span><br><span class="hljs-keyword"></span><span class="hljs-keyword">jupyter </span>serverextension enable --py <span class="hljs-keyword">jupyter_http_over_ws</span><br></code></pre></td></tr></table></figure> 安装网页扩展包并确认jupter版本符合</p>
-<p>之后在本地终端执行jupter <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">jupyter notebook --NotebookApp.<span class="hljs-attribute">allow_origin</span>=<span class="hljs-string">&#x27;https://colab.research.google.com&#x27;</span> <span class="hljs-attribute">--port</span>=8888 --NotebookApp.<span class="hljs-attribute">port_retries</span>=0<br></code></pre></td></tr></table></figure> 在在线环境中连接本地环境 <img
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">pip install jupyter_http_over_ws
+jupyter serverextension enable --py jupyter_http_over_ws<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure> 安装网页扩展包并确认jupter版本符合</p>
+<p>之后在本地终端执行jupter <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">jupyter notebook --NotebookApp.allow_origin&#x3D;&#39;https:&#x2F;&#x2F;colab.research.google.com&#39; --port&#x3D;8888 --NotebookApp.port_retries&#x3D;0<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> 在在线环境中连接本地环境</p>
+<figure>
+<img
 src="https://img-blog.csdnimg.cn/f27f460d0eb244af8e67b9cb83643944.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" /> 将jupter网址填入</p>
-<p><img
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>将jupter网址填入</p>
+<figure>
+<img
 src="https://img-blog.csdnimg.cn/704053a29b58477894b3f89fa47c7761.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" /> 之后执行代码 <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> ee<br><span class="hljs-title">ee</span>.<span class="hljs-type">Authenticate</span>()<br></code></pre></td></tr></table></figure>
+alt="在这里插入图片描述" />
+<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>之后执行代码： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">import ee
+ee.Authenticate()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure>
 如果出现这样则点击连接进行授权，可以避免谷歌客户端包等下载 <img
 src="https://img-blog.csdnimg.cn/0cbd2a5b81d14566bb9a3801381d6215.png#pic_center" srcset="/img/loading.gif" lazyload
 alt="在这里插入图片描述" />
@@ -310,7 +321,13 @@ alt="在这里插入图片描述" />
 <h3 id="关于本地接口的设置">关于本地接口的设置</h3>
 <p>接口的设置参考: <a
 target="_blank" rel="noopener" href="https://blog.csdn.net/awdwd233333/article/details/123394694?ops_request_misc=&amp;request_id=&amp;biz_id=102&amp;utm_term=gee%20python&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-123394694.142%5Ev67%5Ewechat,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&amp;spm=1018.2226.3001.4187">【笔记】GEE之python学习</a></p>
-<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stylus">#初始化本地GEE服务<br>import ee<br>import os<br>os<span class="hljs-selector-class">.environ</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;HTTP_PROXY&#x27;</span>]</span> = <span class="hljs-string">&#x27;http://127.0.0.1:1111&#x27;</span><br>os<span class="hljs-selector-class">.environ</span><span class="hljs-selector-attr">[<span class="hljs-string">&#x27;HTTPS_PROXY&#x27;</span>]</span> = <span class="hljs-string">&#x27;http://127.0.0.1:1111&#x27;</span><br>ee<span class="hljs-selector-class">.Initialize</span>()<br><span class="hljs-selector-id">#print</span>(ee<span class="hljs-selector-class">.Image</span>(<span class="hljs-string">&#x27;USGS/SRTMGL1_003&#x27;</span>)<span class="hljs-selector-class">.getInfo</span>())<br></code></pre></td></tr></table></figure>
+<p>在本地的编译器交互窗口，或者jupter中完成GEE的初始化 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">#初始化本地GEE服务
+import ee
+import os
+os.environ[&#39;HTTP_PROXY&#39;] &#x3D; &#39;http:&#x2F;&#x2F;127.0.0.1:1111&#39;
+os.environ[&#39;HTTPS_PROXY&#39;] &#x3D; &#39;http:&#x2F;&#x2F;127.0.0.1:1111&#39;
+ee.Initialize()
+#print(ee.Image(&#39;USGS&#x2F;SRTMGL1_003&#39;).getInfo())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
 这里'http://127.0.0.1:1111'中后四位为你电脑代理的端口，此处若有问题请自行百度</p>
 <p>之后就可以完全本地连接GEE进行编程了</p>
 
