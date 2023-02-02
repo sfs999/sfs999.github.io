@@ -1,79 +1,103 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="google-site-verification" content="" />
-  <meta name="referrer" content="unsafe-url">
-  
-  <title>Hexo</title>
-  <meta name="author" content="John Doe">
-  <meta name="description" content="title: GEE环境的搭建
-首先感谢各位大佬的经验~最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法本文写于2022年12月12日，该方法实测有效
-首先需要科学上网！！！注">
-  
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:site_name" content="Hexo"/>
-  <link href="/apple-touch-icon-precomposed.png" sizes="180x180" rel="apple-touch-icon-precomposed">
-  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/m.min.css">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><meta name="author" content="John Doe"><meta name="renderer" content="webkit"><meta name="copyright" content="John Doe"><meta name="keywords" content="Hexo"><meta name="description" content=""><meta name="Cache-Control" content="no-cache"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Mr.Long's Blog</title><link rel="stylesheet" href="/css/style.css?v=2018.7.9"><link rel="stylesheet" href="/css/animation.css?v=2018.7.9"><link rel="icon" href="/img/assets/favicon.ico"><link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css?version=1.5.6"><!-- scripts--><script>(function( w ){
+  "use strict";
+  // rel=preload support test
+  if( !w.loadCSS ){
+    w.loadCSS = function(){};
+  }
+  // define on the loadCSS obj
+  var rp = loadCSS.relpreload = {};
+  // rel=preload feature support test
+  // runs once and returns a function for compat purposes
+  rp.support = (function(){
+    var ret;
+    try {
+      ret = w.document.createElement( "link" ).relList.supports( "preload" );
+    } catch (e) {
+      ret = false;
+    }
+    return function(){
+      return ret;
+    };
+  })();
 
-<meta name="generator" content="Hexo 5.4.2"></head>
+  // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+  // then change that media back to its intended value on load
+  rp.bindMediaToggle = function( link ){
+    // remember existing media attr for ultimate state, or default to 'all'
+    var finalMedia = link.media || "all";
 
-<body>
-  <a id="top"></a>
-  <div id="main">
-    <div class="main-ctnr">
-      <div class="behind">
-  <a href="/" class="back black-color">
-    <svg class="i-close" viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-        <path d="M2 30 L30 2 M30 30 L2 2"></path>
-    </svg>
-  </a>
-  
-</div>
+    function enableStylesheet(){
+      link.media = finalMedia;
+    }
+
+    // bind load handlers to enable media
+    if( link.addEventListener ){
+      link.addEventListener( "load", enableStylesheet );
+    } else if( link.attachEvent ){
+      link.attachEvent( "onload", enableStylesheet );
+    }
+
+    // Set rel and non-applicable media type to start an async request
+    // note: timeout allows this to happen async to let rendering continue in IE
+    setTimeout(function(){
+      link.rel = "stylesheet";
+      link.media = "only x";
+    });
+    // also enable media after 3 seconds,
+    // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+    setTimeout( enableStylesheet, 3000 );
+  };
+
+  // loop through link elements in DOM
+  rp.poly = function(){
+    // double check this to prevent external calls from running
+    if( rp.support() ){
+      return;
+    }
+    var links = w.document.getElementsByTagName( "link" );
+    for( var i = 0; i < links.length; i++ ){
+      var link = links[ i ];
+      // qualify links to those with rel=preload and as=style attrs
+      if( link.rel === "preload" && link.getAttribute( "as" ) === "style" && !link.getAttribute( "data-loadcss" ) ){
+        // prevent rerunning on link
+        link.setAttribute( "data-loadcss", true );
+        // bind listeners to toggle media back
+        rp.bindMediaToggle( link );
+      }
+    }
+  };
+
+  // if unsupported, run the polyfill
+  if( !rp.support() ){
+    // run once at least
+    rp.poly();
+
+    // rerun poly on an interval until onload
+    var run = w.setInterval( rp.poly, 500 );
+    if( w.addEventListener ){
+      w.addEventListener( "load", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    } else if( w.attachEvent ){
+      w.attachEvent( "onload", function(){
+        rp.poly();
+        w.clearInterval( run );
+      } );
+    }
+  }
 
 
-  <article class="standard post">
-    <div class="title">
-      
-  
-    <h1 class="page-title center">
-        
-    </h1>
-  
-
-
-    </div>
-    <div class="meta center">
-      <time datetime="2023-02-02T05:30:07.059Z" itemprop="datePublished">
-  <svg class="i-calendar" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-    <path d="M2 6 L2 30 30 30 30 6 Z M2 15 L30 15 M7 3 L7 9 M13 3 L13 9 M19 3 L19 9 M25 3 L25 9"></path>
-  </svg>
-  &nbsp;
-  2023-02-02
-</time>
-
-
-
-
-
-
-    </div>
-    <hr>
-    
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%84%9F%E8%B0%A2%E5%90%84%E4%BD%8D%E5%A4%A7%E4%BD%AC%E7%9A%84%E7%BB%8F%E9%AA%8C"><span class="toc-text">首先感谢各位大佬的经验~</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E8%A6%81%E6%B1%82%E5%AD%A6%E4%B9%A0GEE%EF%BC%8C%E7%94%B1%E4%B8%8E%E6%83%B3%E8%A6%81%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E7%9A%84PY%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%9C%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E4%BA%86%E4%B8%80%E4%BA%9B%E5%9D%91%EF%BC%8C%E4%BD%86%E5%8F%82%E8%80%83%E5%A4%A7%E4%BD%AC%E7%9A%84%E6%96%87%E7%AB%A0%E6%9C%80%E7%BB%88%E6%88%90%E5%8A%9F%E9%83%A8%E7%BD%B2%E4%BA%86%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%EF%BC%8C%E4%BB%A5%E4%B8%8B%E4%B8%BA%E5%8F%AA%E9%9C%80%E5%AE%89%E8%A3%85earthengine-api%E7%9A%84%E9%83%A8%E7%BD%B2%E6%96%B9%E6%B3%95"><span class="toc-text">最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-text">首先需要科学上网！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%B0%B7%E6%AD%8C%E8%B4%A6%E5%8F%B7%E5%B9%B6%E7%94%B3%E8%AF%B7GEE%E4%BD%BF%E7%94%A8"><span class="toc-text">注册谷歌账号并申请GEE使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%8B%E5%90%8E%E9%9C%80%E8%A6%81%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85earthengine-api"><span class="toc-text">之后需要本地环境安装earthengine-api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupter%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-text">jupter在线编程的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-text">关于本地接口的设置</span></a></li></ol></li></ol></li></ol>
-    
-    <div class="picture-container">
-      
-    </div>
-    <hr>
+  // commonjs
+  if( typeof exports !== "undefined" ){
+    exports.loadCSS = loadCSS;
+  }
+  else {
+    w.loadCSS = loadCSS;
+  }
+}( typeof global !== "undefined" ? global : this ) );</script><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" defer></script><script src="/js/main.js?v=2018.7.9" defer></script><!-- fancybox--><link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" defer></script><!-- busuanzi--><script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><meta name="generator" content="Hexo 5.4.2"></head><body><section class="profile-close" id="cxo-profile"><div class="profile-avatar"><i class="fa fa-caret-left"></i><img src="/img/assets/cat.png"></div><!--.profile-saying
+  i.fa.fa-comment
+  .saying--><div class="cxo-profile-inner"><div class="profile-name">longlongyu</div><div class="profile-signature">for me</div><div class="friends"><div>FRIENDS</div><span><a href="//github.com/Longlongyu" target="_black">friendA</a></span><span><a href="//github.com/" target="_black">friendB</a></span><span><a href="//github.com/" target="_black">friendC</a></span></div><div class="read-progress"></div></div></section><header id="cxo-intro" style="height: 70vh;background-image: url(/img/intro/index-bg.png);"><nav id="cxo-intro-nav"><section><div class="intro-nav-title"><a href="/">Mr.Long's Blog</a></div><div class="intro-nav-label-box"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div><i class="fa fa-bars intro-nav-menu"><div class="intro-nav-drop"><a href="/">Home</a><a href="/about/">About</a><a href="/archives/">Archives</a><a href="/tags/">Tags</a></div></i><div class="clear"></div></section></nav><h1 class="post-title"></h1><div class="post-intros"><div class="post-intro-meta"><span class="post-intro-time"><i class="post-intro-calendar fa fa-calendar"></i><span>2023-02-02</span></span></div></div></header><article class="cxo-up" id="cxo-content-outer"><section id="cxo-content-inner"><article class="article-entry" id="post"><hr>
 <p>title: GEE环境的搭建</p>
 <h1 id="首先感谢各位大佬的经验"><a href="#首先感谢各位大佬的经验" class="headerlink" title="首先感谢各位大佬的经验~"></a>首先感谢各位大佬的经验~</h1><h2 id="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"><a href="#最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法" class="headerlink" title="最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法"></a>最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</h2><p>本文写于2022年12月12日，该方法实测有效</p>
 <h3 id="首先需要科学上网！！！"><a href="#首先需要科学上网！！！" class="headerlink" title="首先需要科学上网！！！"></a>首先需要科学上网！！！</h3><h3 id="注册谷歌账号并申请GEE使用"><a href="#注册谷歌账号并申请GEE使用" class="headerlink" title="注册谷歌账号并申请GEE使用"></a>注册谷歌账号并申请GEE使用</h3><p>关于注册谷歌账号的方法已经有很多了，这里给一个指路<br>本文参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43536034/article/details/125326723?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167083736816782390539750%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=167083736816782390539750&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-125326723-null-null.142%5Ev68%5Econtrol,201%5Ev4%5Eadd_ask,213%5Ev2%5Et3_control1&utm_term=GEE%E8%B4%A6%E5%8F%B7&spm=1018.2226.3001.4187">GEE学习系列——GEE账号注册</a></p>
@@ -196,99 +220,4 @@
 
 <p>这里’<a href="http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度">http://127.0.0.1:1111&#39;中后四位为你电脑代理的端口，此处若有问题请自行百度</a></p>
 <p>之后就可以完全本地连接GEE进行编程了</p>
-
-
-  </article>
-  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-  <div class="busuanzi center">
-    page PV:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
-    site PV:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
-    site UV:&nbsp;<span id="busuanzi_value_site_uv"></span>
-  </div>
-
-
-    
-
-
-
-
-
-    </div>
-  </div>
-  <footer class="page-footer"><div class="clearfix">
-</div>
-<div class="right-foot">
-    <div class="firstrow">
-        <a href="#top" target="_self">
-        <svg class="i-caret-right" viewBox="0 0 32 32" width="24" height="24" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-            <path d="M10 30 L26 16 10 2 Z"></path>
-        </svg>
-        </a>
-        © sfs999 2023-?
-    </div>
-    <div class="secondrow">
-        <a target="_blank" rel="noopener" href="https://github.com/gaoryrt/hexo-theme-pln">
-        Theme Pln
-        </a>
-    </div>
-</div>
-<div class="clearfix">
-</div>
-</footer>
-  <script type="text/javascript">
-
-// disqus scripts
-
-
-// dropdown scripts
-function $(s) {
-    return document.querySelector(s)
-  }
-
-  function $$(s) {
-    return document.querySelectorAll(s)
-  }
-  var dropDownElArr = $$('.dropdown')
-  for (var i = 0; i < dropDownElArr.length; i += 1) {
-    dropDownElArr[i].addEventListener('click', function(event) {
-      var content = this.querySelector('.dropdown-content')
-      event.stopPropagation()
-      if (content.className.indexOf('open') < 0) {
-        content.classList.add('open')
-      } else {
-        content.classList.remove('open')
-      }
-    })
-  }
-  document.body.addEventListener('click', function() {
-    var dropDownContentElArr = $$('.dropdown-content')
-    for (var i = 0; i < dropDownContentElArr.length; i += 1) {
-      dropDownContentElArr[i].classList.remove('open')
-    }
-  })
-
-  // smooth scroll
-  $$('a[href^="#"]').forEach(e=>{
-    e.addEventListener("click", function(e) {
-      e.preventDefault();
-      var t = this.getAttribute("href").substr(1);
-      $(`[id='${decodeURIComponent(t)}']`).scrollIntoView({
-        behavior: "smooth"
-      }),
-      t === "top" ? history.replaceState(null, null, " ") : history.pushState(null, null, `#${t}`)
-    })
-  })
-
-// search
-var searchEl = document.querySelector("#local-search-input")
-if (searchEl) searchEl.addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') {
-    var s = e.target.value
-    window.open('//www.google.com/search?q=site:http://example.com%20' + s, '_blank').focus()
-  }
-})
-
-</script>
-
-</body>
-</html>
+</article><!-- lincense--><div class="license-wrapper"><p> <span>Author:  </span><a href="http://example.com">John Doe</a></p><p> <span>Link:  </span><a href="http://example.com/2023/02/02/GEE%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/">http://example.com/2023/02/02/GEE%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/</a></p><p> <span>Copyright:  </span><span>All articles in this blog are licensed under <a rel="license noopener" target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/3.0">CC BY-NC-SA 3.0</a> unless stating additionally.</span></p></div><div class="post-paginator"><a class="prevSlogan" href="/2023/02/02/hello-world/" title="Hello World"><span>< PreviousPost</span><br><span class="prevTitle">Hello World</span></a><div class="clear"></div></div><div id="comment"></div></section></article><footer id="cxo-footer-outer"><div id="cxo-footer-inner"><p class="footer-container"><span>Site by </span><a target="_blank" rel="noopener" href="http://hexo.io"><span>Hexo</span></a><span> | theme </span><a target="_blank" rel="noopener" href="https://github.com/Longlongyu/hexo-theme-Cxo"><span>Cxo</span></a></p><i class="fa fa-user"> </i><span id="busuanzi_value_site_uv"></span><span> | </span><i class="fa fa-eye"> </i><span id="busuanzi_value_site_pv"></span></div></footer><!-- catelog--><div class="toc-wrapper" style="top: 70vh;"><div class="toc-catalog"><i class="fa fa-list"> </i><span>CATALOG</span></div><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E6%84%9F%E8%B0%A2%E5%90%84%E4%BD%8D%E5%A4%A7%E4%BD%AC%E7%9A%84%E7%BB%8F%E9%AA%8C"><span class="toc-number">1.</span> <span class="toc-text">首先感谢各位大佬的经验~</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E8%BF%91%E8%A6%81%E6%B1%82%E5%AD%A6%E4%B9%A0GEE%EF%BC%8C%E7%94%B1%E4%B8%8E%E6%83%B3%E8%A6%81%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E7%9A%84PY%E7%8E%AF%E5%A2%83%EF%BC%8C%E5%9C%A8%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E7%9A%84%E8%BF%87%E7%A8%8B%E4%B8%AD%E8%B8%A9%E4%BA%86%E4%B8%80%E4%BA%9B%E5%9D%91%EF%BC%8C%E4%BD%86%E5%8F%82%E8%80%83%E5%A4%A7%E4%BD%AC%E7%9A%84%E6%96%87%E7%AB%A0%E6%9C%80%E7%BB%88%E6%88%90%E5%8A%9F%E9%83%A8%E7%BD%B2%E4%BA%86%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%EF%BC%8C%E4%BB%A5%E4%B8%8B%E4%B8%BA%E5%8F%AA%E9%9C%80%E5%AE%89%E8%A3%85earthengine-api%E7%9A%84%E9%83%A8%E7%BD%B2%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.</span> <span class="toc-text">最近要求学习GEE，由与想要部署本地的PY环境，在部署环境的过程中踩了一些坑，但参考大佬的文章最终成功部署了本地环境，以下为只需安装earthengine-api的部署方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A6%96%E5%85%88%E9%9C%80%E8%A6%81%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%EF%BC%81%EF%BC%81%EF%BC%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">首先需要科学上网！！！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C%E8%B0%B7%E6%AD%8C%E8%B4%A6%E5%8F%B7%E5%B9%B6%E7%94%B3%E8%AF%B7GEE%E4%BD%BF%E7%94%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">注册谷歌账号并申请GEE使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B9%8B%E5%90%8E%E9%9C%80%E8%A6%81%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85earthengine-api"><span class="toc-number">1.1.3.</span> <span class="toc-text">之后需要本地环境安装earthengine-api</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jupter%E5%9C%A8%E7%BA%BF%E7%BC%96%E7%A8%8B%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.1.4.</span> <span class="toc-text">jupter在线编程的实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8E%E6%9C%AC%E5%9C%B0%E6%8E%A5%E5%8F%A3%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.1.5.</span> <span class="toc-text">关于本地接口的设置</span></a></li></ol></li></ol></li></ol></div><!-- top--><i class="fa fa-arrow-up close" id="go-up" aria-hidden="true"></i></body></html>
