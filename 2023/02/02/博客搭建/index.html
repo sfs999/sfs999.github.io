@@ -23,11 +23,22 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="依托于github完成个人博客的搭建过程，但目前只完成了基础部分 Todo:              评论功能                         版权信息                         页面个性化                         云服务器部署             阿里云学生免费领取6个月              公网IP访问">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/FWHCtJ7aLK42Tb8.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/IOt9dkMJeZ7USAz.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/3oiftY57mMABQ6V.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/akIu3UeKdWZLNmP.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/3XlBmOodFgTCEQu.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/A5K2S7qZcCT4RPH.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/A6lvTkcFjJ1GN92.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/coeP5YGCiI3KQH6.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/Za9YGpBt348M6FU.png">
+<meta property="og:image" content="https://s2.loli.net/2023/02/03/XuNRrZEwhWdzaH9.png">
 <meta property="article:published_time" content="2023-02-02T10:46:30.918Z">
-<meta property="article:modified_time" content="2023-02-02T16:30:57.009Z">
+<meta property="article:modified_time" content="2023-02-02T16:52:44.910Z">
 <meta property="article:author" content="sfs999">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2023/02/03/FWHCtJ7aLK42Tb8.png">
   
   
   
@@ -313,8 +324,7 @@ $ npm install hexo-deployer-git --save <span aria-hidden="true" class="line-numb
 Bash Here，输入以下命令，如图所示则安装成功 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
 <p>Hexo 安装完成后，将会在指定文件夹中新建所需要的文件，Hexo
 文件夹下的目录如下：</p>
-<p><img
-src="https://img-blog.csdnimg.cn/70f97f7834a14314af0a3bd0dc75e430.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/FWHCtJ7aLK42Tb8.png" srcset="/img/loading.gif" lazyload /></p>
 <h3 id="本地查看效果">本地查看效果</h3>
 <p>执行以下命令，执行完即可登录 http://localhost:4000/ 查看效果
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo generate  
@@ -341,23 +351,19 @@ The key&#39;s randomart image is:
 运行以下命令，将公钥的内容复制到系统粘贴板上： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
 <h2 id="在-github-账户中添加你的公钥">在 GitHub 账户中添加你的公钥</h2>
 <p>① 登陆 GitHub，进入 Settings：</p>
-<p><img
-src="https://img-blog.csdnimg.cn/5cf6291e4c0e4f8f94b8f5ba188fe224.png#pic_center" srcset="/img/loading.gif" lazyload />
-② 点击 SSH and GPG Keys：</p>
-<p><img
-src="https://img-blog.csdnimg.cn/f6d7700ec9e74760af3d0142049100c6.png#pic_center" srcset="/img/loading.gif" lazyload />
-③ 选择 New SSH key：</p>
-<p><img
-src="https://img-blog.csdnimg.cn/8fc1ce14f90f4415b25aba6285a7f08d.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
-<p><img
-src="https://img-blog.csdnimg.cn/14aacf2531b34204867354c31810336b.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/IOt9dkMJeZ7USAz.png" srcset="/img/loading.gif" lazyload /> ②
+点击 SSH and GPG Keys：</p>
+<p><img src="https://s2.loli.net/2023/02/03/3oiftY57mMABQ6V.png" srcset="/img/loading.gif" lazyload /> ③
+选择 New SSH key：</p>
+<p><img src="https://s2.loli.net/2023/02/03/akIu3UeKdWZLNmP.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/3XlBmOodFgTCEQu.png" srcset="/img/loading.gif" lazyload /></p>
 <h2 id="测试">测试</h2>
 <p>输入以下命令：注意：==git@github.com不要做任何更改！ #F44336==
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
 <p>之后会显示： <img
-src="https://img-blog.csdnimg.cn/94852a07bd4b4a6fbceb27e7e80b5eab.png#pic_center" srcset="/img/loading.gif" lazyload />
-输入 yes 后会显示： <img
-src="https://img-blog.csdnimg.cn/f2b0e8cf43224faeb87f911e8288d53a.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+src="https://s2.loli.net/2023/02/03/Y7G12dexU5Zsluc.png" srcset="/img/loading.gif" lazyload /> 输入 yes
+后会显示： <img
+src="https://s2.loli.net/2023/02/03/YuJc1vgyqw5eAHG.png" srcset="/img/loading.gif" lazyload /></p>
 <p>此时表示设置正确 ## 配置 Git 个人信息  Git
 会根据用户的名字和邮箱来记录提交，GitHub
 也是用这些信息来做权限的处理，输入以下命令进行个人信息的设置，把名称和邮箱替换成你自己的，名字可以不是
@@ -367,32 +373,27 @@ $ git config --global user.email  &quot;此处填你的邮箱&quot;<span aria-hi
 文件更新到 Github 的库中 ① 登录 Github 打开自己的项目 your
 name.github.io</p>
 <figure>
-<img
-src="https://img-blog.csdnimg.cn/072897459005440b8efa93aa22b537fb.png#pic_center" srcset="/img/loading.gif" lazyload
+<img src="https://s2.loli.net/2023/02/03/A5K2S7qZcCT4RPH.png" srcset="/img/loading.gif" lazyload
 alt="在这里插入图片描述" />
 <figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>② 鼠标移到 Clone or download 按钮，选择 Use SSH</p>
-<p><img
-src="https://img-blog.csdnimg.cn/5099420ec06440c3b197ad44638b4800.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/A6lvTkcFjJ1GN92.png" srcset="/img/loading.gif" lazyload /></p>
 <p>③ 一键复制地址</p>
-<p><img
-src="https://img-blog.csdnimg.cn/a5d0329f061b4c0895d4809cf82510ef.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/coeP5YGCiI3KQH6.png" srcset="/img/loading.gif" lazyload /></p>
 <p>④ 打开你创建的 Hexo
 文件夹（如：E:_Blog），右键用记事本（Notepad++或者VS
 code等都可以）打开该文件夹下的 _config.yml 文件</p>
-<p><img
-src="https://img-blog.csdnimg.cn/bd21bb1cd72945beafb8164e3e14e220.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/Za9YGpBt348M6FU.png" srcset="/img/loading.gif" lazyload /></p>
 <p>⑤ 按下图修改 _config.yml 文件并保存 注意：master改为main <img
-src="https://img-blog.csdnimg.cn/cb8667ff948b48098871a82a332cf0c7.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+src="https://s2.loli.net/2023/02/03/JKRU7Cf8GpWDNOA.png" srcset="/img/loading.gif" lazyload /></p>
 <p>⑥ 在 Hexo 文件夹下分别执行以下命令 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 执行完之后会让你输入你的 Github
 的账号和密码，如果此时报以下错误，说明你的 deployer 没有安装成功
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">ERROR Deployer not found: git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
 <p>需要执行以下命令再安装一次： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">npm install hexo-deployer-git --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> 再执行 hexo g
 -d，你的博客就会部署到 Github 上了 ⑦ 访问博客 等待博客构建完毕</p>
-<p><img
-src="https://img-blog.csdnimg.cn/21e1fe012c754005a4621261c8dd2854.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="https://s2.loli.net/2023/02/03/XuNRrZEwhWdzaH9.png" srcset="/img/loading.gif" lazyload /></p>
 <p>你的博客地址：https://你的用户名.github.io
 ,现在每个人都可以通过此链接访问你的博客了</p>
 <h2 id="个性化fluid">个性化Fluid</h2>
