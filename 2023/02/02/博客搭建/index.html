@@ -24,7 +24,7 @@
 <meta property="og:description" content="依托于github完成个人博客的搭建过程，但目前只完成了基础部分 Todo:              评论功能                         版权信息                         页面个性化                         云服务器部署             阿里云学生免费领取6个月              公网IP访问">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-02T10:46:30.918Z">
-<meta property="article:modified_time" content="2023-02-02T15:59:20.844Z">
+<meta property="article:modified_time" content="2023-02-02T16:10:36.580Z">
 <meta property="article:author" content="sfs999">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.5k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          23 分钟
+          21 分钟
         
       </span>
     
@@ -337,7 +337,7 @@ The key&#39;s randomart image is:
 运行以下命令，将公钥的内容复制到系统粘贴板上： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ clip &lt; ~&#x2F;.ssh&#x2F;id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> ## 在
 GitHub 账户中添加你的公钥 ① 登陆 GitHub，进入 Settings：</p>
 <p><img
-src="https://img-blog.csdnimg.cn/5cf6291e4c0e4f8f94b8f5ba188fe224.png#pic_center" srcset="/img/loading.gif" lazyload />)
+src="https://img-blog.csdnimg.cn/5cf6291e4c0e4f8f94b8f5ba188fe224.png#pic_center" srcset="/img/loading.gif" lazyload />
 ② 点击 SSH and GPG Keys：</p>
 <p><img
 src="https://img-blog.csdnimg.cn/f6d7700ec9e74760af3d0142049100c6.png#pic_center" srcset="/img/loading.gif" lazyload />)
@@ -350,11 +350,9 @@ src="https://img-blog.csdnimg.cn/14aacf2531b34204867354c31810336b.png#pic_center
 <h2 id="测试">测试</h2>
 <p>输入以下命令：注意：==git@github.com不要做任何更改！ #F44336==
 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
-<p>之后会显示：</p>
-<p><img
+<p>之后会显示： <img
 src="https://img-blog.csdnimg.cn/94852a07bd4b4a6fbceb27e7e80b5eab.png#pic_center" srcset="/img/loading.gif" lazyload />
-输入 yes 后会显示：</p>
-<p><img
+输入 yes 后会显示： <img
 src="https://img-blog.csdnimg.cn/f2b0e8cf43224faeb87f911e8288d53a.png#pic_center" srcset="/img/loading.gif" lazyload />
 此时表示设置正确 ## 配置 Git 个人信息  Git
 会根据用户的名字和邮箱来记录提交，GitHub
@@ -371,31 +369,18 @@ alt="在这里插入图片描述" />
 <figcaption aria-hidden="true">在这里插入图片描述</figcaption>
 </figure>
 <p>② 鼠标移到 Clone or download 按钮，选择 Use SSH</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/5099420ec06440c3b197ad44638b4800.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://img-blog.csdnimg.cn/5099420ec06440c3b197ad44638b4800.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p>③ 一键复制地址</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/a5d0329f061b4c0895d4809cf82510ef.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://img-blog.csdnimg.cn/a5d0329f061b4c0895d4809cf82510ef.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p>④ 打开你创建的 Hexo
 文件夹（如：E:_Blog），右键用记事本（Notepad++或者VS
 code等都可以）打开该文件夹下的 _config.yml 文件</p>
-<figure>
-<img
-src="https://img-blog.csdnimg.cn/bd21bb1cd72945beafb8164e3e14e220.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" />
-<figcaption aria-hidden="true">在这里插入图片描述</figcaption>
-</figure>
+<p><img
+src="https://img-blog.csdnimg.cn/bd21bb1cd72945beafb8164e3e14e220.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p>⑤ 按下图修改 _config.yml 文件并保存 注意：master改为main <img
-src="https://img-blog.csdnimg.cn/cb8667ff948b48098871a82a332cf0c7.png#pic_center" srcset="/img/loading.gif" lazyload
-alt="在这里插入图片描述" /></p>
+src="https://img-blog.csdnimg.cn/cb8667ff948b48098871a82a332cf0c7.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p>⑥ 在 Hexo 文件夹下分别执行以下命令 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ hexo g -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure>
 执行完之后会让你输入你的 Github
 的账号和密码，如果此时报以下错误，说明你的 deployer 没有安装成功
@@ -405,37 +390,11 @@ alt="在这里插入图片描述" /></p>
 <p><img
 src="https://img-blog.csdnimg.cn/21e1fe012c754005a4621261c8dd2854.png#pic_center" srcset="/img/loading.gif" lazyload /></p>
 <p>你的博客地址：https://你的用户名.github.io
-,现在每个人都可以通过此链接访问你的博客了 # 安装Hexo Fluid <a
-target="_blank" rel="noopener" href="https://hexo.fluid-dev.com/docs/start/#%E4%B8%BB%E9%A2%98%E7%AE%80%E4%BB%8B">Hexo
-Fluid用户手册</a>
-通过git指令直接下载Fluid后按照官方手册中的内容完成安装</p>
+,现在每个人都可以通过此链接访问你的博客了</p>
 <h2 id="个性化fluid">个性化Fluid</h2>
 <p>在_config.fluid.yml文件中查找对应位置进行修改 修改主界面标语
  查找关键词：Slogan 修改主页名称
- 查找关键词：blog_title依托于github完成个人博客的搭建过程，但目前只完成了基础部分
-Todo: <div>
-            <input type="checkbox" disabled >评论功能
-          </div> <div>
-            <input type="checkbox" disabled >版权信息
-          </div> <div>
-            <input type="checkbox" disabled >页面个性化
-          </div> <div>
-            <input type="checkbox" disabled >云服务器部署
-          </div>  <a
-target="_blank" rel="noopener" href="https://developer.aliyun.com/plan/student">阿里云学生免费领取6个月</a>
-<div>
-            <input type="checkbox" disabled >公网IP访问
-          </div> <!-- more --> 正文</p>
-<h1 id="本地建站-1">本地建站</h1>
-<p>该部分引用于：<a
-target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36759224/article/details/82121420?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522167531679116782427495873%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&amp;request_id=167531679116782427495873&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-6-82121420-null-null.142%5Ev72%5Epc_search_v2,201%5Ev4%5Eadd_ask&amp;utm_term=github%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA">使用
-Github Pages 和 Hexo 搭建自己的独立博客【超级详细的小白教程】</a>
-需要安装的软件： ## Node.js <a
-target="_blank" rel="noopener" href="https://nodejs.org/en/download/">官网</a> ## Git <a
-target="_blank" rel="noopener" href="https://git-scm.com/download/win">官网</a> 检验Git是否安装成功
-```text $ git --version<br />
-$ node -v<br />
-$ npm -v</p>
+ 查找关键词：blog_title依托于github完成个人博客的搭建过程，但目前只完成了基础部分</p>
 
                 
               </div>
