@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>linux环境搭建docker和portainer</title>
+    <link href="/2023/02/08/docker/"/>
+    <url>/2023/02/08/docker/</url>
+    
+    <content type="html"><![CDATA[<p>目前进度是开机启动portainer服务，然后局域网内的计算机可以访问网址操作portainer接下来的问题： <div>            <input type="checkbox" disabled >必要的时候的远程桌面          </div> ：Windows自带，但需要一个HDMI诱骗器<div>            <input type="checkbox" disabled >wifi模块：外置天线          </div> <div>            <input type="checkbox" disabled >修改待机时间          </div></p><span id="more"></span><p>搭建过程：</p><h1 id="docker">1docker</h1><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">sudo apt-get updatesudo apt-get install \    ca-certificates \    curl \    gnupg \    lsb-releasecurl -fsSL https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo gpg --dearmor -o &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;docker-archive-keyring.gpgapt-get updatesudo apt-get install docker-ce docker-ce-cli containerd.iosudo docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>Docker 安装完成，请检查是否出现 Hello from Docker!'</p><h1 id="portainer">2portainer</h1><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">sudo service docker restartsudo docker volume create portainer_datasudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer \--restart&#x3D;always \-v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock \-v portainer_data:&#x2F;data \portainer&#x2F;portainer-ce:latestsudo docker ps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure><p>echo 'Portainer 安装完成，请检查是否出现portainer/portainer-ce:latest 字样' echo 'Web页面访问https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境配置</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>docker</tag>
+      
+      <tag>portainer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建博客的过程记录</title>
     <link href="/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
     <url>/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
