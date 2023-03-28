@@ -16,23 +16,23 @@
   <meta name="author" content="sfs999">
   <meta name="keywords" content="">
   
-    <meta name="description" content="目前进度是开机启动portainer服务，然后局域网内的计算机可以访问网址操作portainer 接下来的问题：              必要的时候的远程桌面            ：Windows自带，但需要一个HDMI诱骗器              wifi模块：外置天线                         修改待机时间">
+    <meta name="description" content="用来配置服务器python环境的记录              搭建doctor">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux环境搭建docker和portainer">
-<meta property="og:url" content="http://example.com/2023/02/08/docker/index.html">
+<meta property="og:title" content="linux环境搭建pytorch环境">
+<meta property="og:url" content="http://example.com/2023/03/28/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8pytorch%E7%8E%AF%E5%A2%83/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="目前进度是开机启动portainer服务，然后局域网内的计算机可以访问网址操作portainer 接下来的问题：              必要的时候的远程桌面            ：Windows自带，但需要一个HDMI诱骗器              wifi模块：外置天线                         修改待机时间">
+<meta property="og:description" content="用来配置服务器python环境的记录              搭建doctor">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-02-08T09:38:59.107Z">
-<meta property="article:modified_time" content="2023-02-08T09:49:40.388Z">
+<meta property="article:published_time" content="2023-03-28T02:42:46.893Z">
+<meta property="article:modified_time" content="2023-03-28T05:15:07.894Z">
 <meta property="article:author" content="sfs999">
-<meta property="article:tag" content="docker">
-<meta property="article:tag" content="portainer">
+<meta property="article:tag" content="linux">
+<meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>linux环境搭建docker和portainer - Hexo</title>
+  <title>linux环境搭建pytorch环境 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -200,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux环境搭建docker和portainer"></span>
+            <span id="subtitle" data-typed-text="linux环境搭建pytorch环境"></span>
           
         </div>
 
@@ -211,8 +211,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-08 17:38" pubdate>
-          2023年2月8日 下午
+        <time datetime="2023-03-28 10:42" pubdate>
+          2023年3月28日 上午
         </time>
       </span>
     
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          894 字
+          2.5k 字
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          8 分钟
+          21 分钟
         
       </span>
     
@@ -272,50 +272,93 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux环境搭建docker和portainer</h1>
+            <h1 style="display: none">linux环境搭建pytorch环境</h1>
             
             
               <div class="markdown-body">
                 
-                <p>目前进度是开机启动portainer服务，然后局域网内的计算机可以访问网址操作portainer
-接下来的问题： <div>
-            <input type="checkbox" disabled >必要的时候的远程桌面
-          </div> ：Windows自带，但需要一个HDMI诱骗器
-<div>
-            <input type="checkbox" disabled >wifi模块：外置天线
-          </div> <div>
-            <input type="checkbox" disabled >修改待机时间
-          </div></p>
-<span id="more"></span>
-<p>搭建过程：</p>
-<h1 id="docker">1docker</h1>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">sudo apt-get update
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg \
-    lsb-release
+                <p>用来配置服务器python环境的记录 <div>
+            <input type="checkbox" disabled >搭建doctor
+          </div> <span id="more"></span></p>
+<h1 id="安装mini-conda">1安装mini-conda</h1>
+<p><a
+target="_blank" rel="noopener" href="https://docs.conda.io/en/latest/miniconda.html#linux-installers">官网</a>
+从官网下载对应版本，对应系统的安装包</p>
+<p>将安装包传入linux系统 cd到目标文件目录： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">bash Miniconda3-4.7.12.1-Linux-x86_64.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
+<p>安装后重新加载配置文件 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">source .bashrc<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure></p>
+<h1 id="基础命令">2基础命令</h1>
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">conda --version 查看安装的conda的版本，检验是否安装成功
+conda list：查看安装了哪些包。
+conda search XXXX:查找包的版本
+conda install package_name(包名)：安装包
+conda env list 或 conda info -e：查看当前存在哪些虚拟环境
+conda update conda：检查更新当前conda
+conda create -n 创建conda环境
+激活环境 conda activate XXX
+退出环境conda deactivate
+移除环境： conda&#x2F;mamba remove -n XXX --all
+导出环境： conda env export xxx.yaml 将现有的包导出，方便以后直接创建环境
+复现环境： conda env create -f environment.yaml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
+<p>添加镜像 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">conda config --add channels genomedk
+conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;
+conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;main&#x2F;
+conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;conda-forge&#x2F;
+conda config --add channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;cloud&#x2F;bioconda&#x2F;
+conda config --set show_channel_urls yes
 
-curl -fsSL https:&#x2F;&#x2F;download.docker.com&#x2F;linux&#x2F;ubuntu&#x2F;gpg | sudo gpg --dearmor -o &#x2F;usr&#x2F;share&#x2F;keyrings&#x2F;docker-archive-keyring.gpg
+#查看已配置的镜像
+conda config --show
 
-apt-get update
-sudo apt-get install docker-ce docker-ce-cli containerd.io
-sudo docker run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<p>Docker 安装完成，请检查是否出现 Hello from Docker!'</p>
-<h1 id="portainer">2portainer</h1>
-<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">sudo service docker restart
-
-sudo docker volume create portainer_data
-sudo docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
---restart&#x3D;always \
--v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock \
--v portainer_data:&#x2F;data \
-portainer&#x2F;portainer-ce:latest
-
-sudo docker ps<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure>
-<p>echo 'Portainer 安装完成，请检查是否出现
-portainer/portainer-ce:latest 字样' echo 'Web页面访问
-https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>
+#删除某个镜像源
+conda config --remove channels https:&#x2F;&#x2F;mirrors.tuna.tsinghua.edu.cn&#x2F;anaconda&#x2F;pkgs&#x2F;free&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure></p>
+<h1 id="配置pytorch环境">3配置pytorch环境</h1>
+<p>查看CUDA版本 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">nvidia-smi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure> <a
+target="_blank" rel="noopener" href="https://pytorch.org/get-started/locally">pytorch官网</a>
+选择对应的版本</p>
+<p>判断是否安装成功 在命令行输入<code>python</code>
+输入<code>import torch</code>，没有报错说明安装成功</p>
+<p>输入<code>torch.cuda.is_available()</code>，返回true表示可以使用GPU</p>
+<h1 id="安装jupyter">4安装jupyter</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/166425946">源于</a> jupyter
+notebook安装 <code>conda install jupyter notebook</code> jupyter lab安装
+<code>conda install -c conda-forge jupyterlab</code> 使用pip安装中文界面
+<code>pip install jupyterlab-language-pack-zh-CN</code></p>
+<p>生成jupyter密码密文
+密文生成有手动生成和自动生成两种方式。自动生成会保存在json文件中。手动生成在ipython中运行直接输出。
+密码用于本地访问服务器jupyter时需要输入的密码。</p>
+<p>自动生成 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">$ jupyter notebook password
+Enter password:  
+Verify password: 
+[NotebookPasswordApp] Wrote hashed password to &#x2F;home&#x2F;you&#x2F;.jupyter&#x2F;jupyter_notebook_config.json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></p>
+<p>手动生成 <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">## 打开ipython，输入
+from IPython.lib import passwd
+passwd()
+## 提示输入密码和确认输入，完成后得到密文。
+Enter password: 
+Verify password: 
+&#39;sha1:********************************************&#39; 
+## 或者
+from notebook.auth import passwd; passwd()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure> 配置</p>
+<p>生成密文后，有两种设置方式，访问jupyter。一种是修改配置文件，另一种为通过ssh启动。</p>
+<p>方式一：修改配置文件
+查看配置文件是否存在：<code>~/.jupyter/jupyter_notebook_config.py</code>
+生成配置文件： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">jupyter notebook --generate-config
+或
+jupyter lab --generate-config<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></div></figure></p>
+<p>修改配置文件
+需要修改主要是四个地方，分别是IP地址，密文，浏览器，端口。
+<figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">## 打开前面生成的配置文件
+vim ~&#x2F;.jupyter&#x2F;jupyter_notebook_config.py
+## 修改配置内容
+## 官方文档建议修改成‘*’，但可能还是无法访问，可以修改成‘0.0.0.1’或者服务器IP 目前不需改
+c.NotebookApp.ip&#x3D;&#39;*&#39;
+## 修改成将之前生成的密文 改shal:后面的内容
+c.NotebookApp.password &#x3D; u&#39;sha1:........&#39;
+c.NotebookApp.open_browser &#x3D; False
+## 随便都可以，防止与其他端口冲突即可。也可以再启动jupyter时，用--port参数指定。
+c.NotebookApp.port &#x3D;8889<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/101070029">jupyter
+lab插件</a></p>
 
                 
               </div>
@@ -349,9 +392,9 @@ https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/docker/">#docker</a>
+        <a href="/tags/linux/">#linux</a>
       
-        <a href="/tags/portainer/">#portainer</a>
+        <a href="/tags/pytorch/">#pytorch</a>
       
     </div>
   
@@ -363,8 +406,8 @@ https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux环境搭建docker和portainer</div>
-      <div>http://example.com/2023/02/08/docker/</div>
+      <div>linux环境搭建pytorch环境</div>
+      <div>http://example.com/2023/03/28/配置服务器pytorch环境/</div>
     </div>
     <div class="license-meta">
       
@@ -376,7 +419,7 @@ https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月8日</div>
+          <div>2023年3月28日</div>
         </div>
       
       
@@ -408,18 +451,12 @@ https://127.0.0.1:9443/' echo '或 https://服务器IP地址:9443/'</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/28/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8pytorch%E7%8E%AF%E5%A2%83/" title="linux环境搭建pytorch环境">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">linux环境搭建pytorch环境</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/02/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" title="搭建博客的过程记录">
-                        <span class="hidden-mobile">搭建博客的过程记录</span>
+                      <a href="/2023/02/08/docker/" title="linux环境搭建docker和portainer">
+                        <span class="hidden-mobile">linux环境搭建docker和portainer</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
