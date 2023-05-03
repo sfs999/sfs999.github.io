@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>搭建服务器环境所使用到的一些应用与端口的记录</title>
+    <link href="/2023/05/03/%E6%90%AD%E5%BB%BAmac%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/"/>
+    <url>/2023/05/03/%E6%90%AD%E5%BB%BAmac%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%B0%E5%BD%95/</url>
+    
+    <content type="html"><![CDATA[<p>用来配置服务器环境 <span id="more"></span></p><h1 id="常用应用端口">常用应用端口：</h1><h2 id="ssh">ssh：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">tcp:&#x2F;&#x2F;127.0.0.1:22 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>登录指令： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">用户名@网址 -p 端口号例：song@2.tcp.cpolar.top -p 11048<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure></p><h2 id="coplar-web-ui">coplar web UI：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;localhost:9200 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>在coplar中开启内网穿透时可以选择只开启https，一方面保证安全性，另一方面可以多开一倍的隧道<a href="https://www.cpolar.com/download">coplar下载地址</a>在win和mac平台直接就是web界面，在linux平台需要编辑配置文件来开启端口</p><h2 id="portainer">Portainer：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;localhost:9000 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>安装指令： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">docker run -d \-p 9000:9000 \-p 8000:8000 \--restart always \-v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock \-v &#x2F;opt&#x2F;docker&#x2F;portainer-ce&#x2F;data:&#x2F;data \--name portainer-ce portainer&#x2F;portainer-ce<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div></figure></p><p>Portainer也可以实现远程控制其他docker节点</p><h2 id="clash">clash：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;localhost:9090 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>控制面板网址： <figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">clash-dashboard：http:&#x2F;&#x2F;clash.razord.top&#x2F;yacd-dashboard：http:&#x2F;&#x2F;yacd.haishan.me&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></div></figure></p><p>在控制面板中将clash的后台服务端口输入就可以访问了</p><p><ahref="https://blog.zzsqwq.cn/posts/how-to-use-clash-on-linux/">docker部署</a></p><h2 id="jupyter-lab">Jupyter lab：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;localhost:8888 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>远程访问Jupyter lab需要修改配置文件如下：</p><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">c.NotebookApp.allow_remote_access &#x3D; Truec.NotebookApp.open_browser &#x3D; Falsec.NotebookApp.ip&#x3D;&#39;*&#39;c.NotebookApp.password &#x3D; &#39;sha1:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></div></figure><h2 id="chat_academic">chat_academic：</h2><figure><div class="code-wrapper"><pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;localhost:50923 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></div></figure><p>注意，使用docker部署时需要将localhost改为host.docker.internal才可以访问宿主机的端口</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境配置</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>服务器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>linux环境搭建pytorch环境</title>
     <link href="/2023/03/28/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8pytorch%E7%8E%AF%E5%A2%83/"/>
     <url>/2023/03/28/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A1%E5%99%A8pytorch%E7%8E%AF%E5%A2%83/</url>
